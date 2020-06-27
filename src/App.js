@@ -3,25 +3,20 @@ import { Card, Button } from '@material-ui/core'
 import List from './components/List'
 import AddList from './components/AddList'
 import listService from './services/listService'
+import { subscribeToTimer, getLists } from './services/socket-api'
 
-const Notification = ({ message }) => {
-  return (
-    message === null
-      ? null
-      : <Card><p>{message}</p></Card>
-  )
-}
 
 const App = () => {
   const [lists, setLists] = useState([])
+  setInterval(() => {
+    getLists((err, returnedLists) => { 
+      setLists(returnedLists)
+    })
+  }, 2000)
 
-  useEffect(() => {
-    listService
-      .getAll()
-      .then(initialLists => {
-        setLists(initialLists)
-      })
-  }, [])
+subscribeToTimer((err, timer) => {
+  console.log(timer)
+})
 
   return (
     <div>

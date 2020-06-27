@@ -8,8 +8,8 @@ function subscribeToTimer(cb) {
 
 function getLists(cb) {
 	socket.on('lists', lists => {
-		cb(null, lists)
 		console.log(lists)
+		cb(null, lists)
 	})
 	socket.emit('getLists', 5000)
 }

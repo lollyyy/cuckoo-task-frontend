@@ -25,7 +25,7 @@ const List = ({ title, tasks, listId, color }) => {
 
   return (
     <div>
-      <Card style={{ 'borderLeft': `10px solid ${color}`}}>
+      <Card style={{ 'borderLeft': `12px solid #${color}`}}>
         <h2>{title}</h2>
         {tasks.map(task => {
           return (
