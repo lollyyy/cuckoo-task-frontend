@@ -41,6 +41,7 @@ const List = ({ title, tasks, listId, color }) => {
           onClick={handleClick}
         >Add task</Button>
         {visible === true && <AddTask listId={listId}/>}
+        <Button onClick={removeList.bind(listId)}>Remove list</Button>
       </Card>
     </div>
   )

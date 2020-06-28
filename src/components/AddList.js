@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import listService from '../services/listService'
 import { Card, Input, Button } from '@material-ui/core'
 
-const AddList = () => {
+const AddList = ({lists, setLists}) => {
   const [newlistName, setlistName] = useState('')
   const [listColor, setlistColor] = useState('')
 
@@ -27,6 +27,7 @@ const AddList = () => {
       .then(returnedlist => {
         setlistName('')
         setlistColor('')
+        setLists(...lists, returnedlist)
       })
   }
 
